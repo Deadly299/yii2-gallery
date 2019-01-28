@@ -13,7 +13,8 @@ class Gallery extends \yii\base\Widget
     public $fileInputPluginLoading = true;
     public $fileInputPluginOptions = [];
     public $label = null;
- 
+    public $dataOptionsLink = [];
+
     public function init()
     {
         if(!$this->label) {
@@ -115,7 +116,7 @@ class Gallery extends \yii\base\Widget
         $crop = Html::a($this->getParamsIconCrop($image->id), false, ['class' => 'crop']);
         $write = Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>', '#', ['data-action' => Url::toRoute(['/gallery/default/modal', 'id' => $image->id]), 'class' => 'write']);
         $img = Html::img($image->getUrl($this->previewSize), ['data-action' => Url::toRoute(['/gallery/default/setmain', 'id' => $image->id]), 'width' => $size[0], 'height' => $size[1], 'class' => 'thumb']);
-        $a = Html::a($img, $image->getUrl());
+        $a = Html::a($img, $image->getUrl(), $this->dataOptionsLink);
 
         return $delete.$crop.$write.$a;
     }
@@ -125,7 +126,7 @@ class Gallery extends \yii\base\Widget
         $params = [
             'class' => 'glyphicon glyphicon-retweet',
             'data-role' => 'show-modal-crop-icon',
-            'data-action' => Url::to(['gallery/default/crop-modal', 'id' => $id]),
+            'data-action' => Url::to(['/gallery/default/crop-modal', 'id' => $id]),
         ];
 
         return Html::tag('span', null, $params);
