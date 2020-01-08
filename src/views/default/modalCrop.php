@@ -13,7 +13,7 @@ use yii\helpers\Url;
                 <h4 class="modal-title">Кроп изображения</h4>
             </div>
             <div class="modal-body crop-modal-body">
-                <img src="<?= $model->getUrl() ?>" width="100%" id="cropbox"/>
+                <img src="<?= $model->getUrl() ?>" width="100%" data-role="cropbox-img" id="cropbox"/>
 
                 <input type="hidden" class="cord-crop" id="heightImage" name="heightImage"/>
                 <input type="hidden" class="cord-crop" id="widthImage" name="widthImage"/>

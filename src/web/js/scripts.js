@@ -124,7 +124,8 @@ Deadly299.frontendGallery = {
             },
             success: function (response) {
                 if (!response.error) {
-                    $('#cropbox').attr('src', response.response);
+                    d = new Date();
+                    $('[data-role=cropbox-img]').attr('src', response.response +'&d='+ d.getTime());
                 }
                 $('.crop-modal-body').css('opacity', 1);
                 $('.preloader-crop').removeClass('loading-crop');
@@ -181,8 +182,9 @@ Deadly299.frontendGallery = {
                     $('.preloader-crop').addClass('loading-crop');
                 },
                 success: function (response) {
+                    d = new Date();
                     if (!response.error) {
-                        $('#cropbox').attr('src', response.response);
+                        $('#cropbox').attr('src', response.response +'&d='+ d.getTime());
                     }
                     $('img#cropbox').imgAreaSelect({
                         hide: true,
