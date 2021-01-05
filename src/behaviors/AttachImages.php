@@ -31,7 +31,9 @@ class AttachImages extends Behavior
     public function init()
     {
         if (empty($this->uploadsPath)) {
-            $this->uploadsPath = yii::$app->getModule('gallery')->imagesStorePath;
+            if(yii::$app->getModule('gallery')) {
+                $this->uploadsPath = yii::$app->getModule('gallery')->imagesStorePath;
+            }
         }
 
         if ($this->quality > 100) {
